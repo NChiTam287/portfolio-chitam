@@ -146,12 +146,20 @@ body.light-mode #navbar.scrolled {
   align-items: center;
 }
 
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
 .logo {
   font-size: 1.5rem;
   font-weight: 800;
   color: var(--text-main);
   text-decoration: none;
   transition: color 0.3s ease, text-shadow 0.3s ease;
+  flex-shrink: 0;
 }
 
 .logo span {
@@ -172,6 +180,62 @@ body.light-mode .logo {
   display: flex;
   align-items: center;
   gap: 2rem;
+}
+
+.menu-toggle {
+  display: none;
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  background: transparent;
+  color: var(--text-main);
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.menu-toggle:hover {
+  background: rgba(99, 102, 241, 0.1);
+  border-color: var(--accent);
+}
+
+.menu-close {
+  display: none !important;
+}
+
+#navRight.open .menu-open {
+  display: none !important;
+}
+
+#navRight.open .menu-close {
+  display: flex !important;
+}
+
+.settings-btn {
+  display: none;
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  background: transparent;
+  color: var(--text-main);
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.settings-btn:hover {
+  background: rgba(99, 102, 241, 0.1);
+  border-color: var(--accent);
 }
 
 .theme-toggle {
@@ -253,22 +317,6 @@ body.light-mode .theme-toggle {
   width: 100%;
 }
 
-
-.menu-toggle,
-.settings-btn {
-  display: none;
-  border: 1px solid rgba(99, 102, 241, 0.3);
-  background: transparent;
-  color: var(--text-main);
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 1.1rem;
-  align-items: center;
-  justify-content: center;
-}
-
 .nav-actions {
   display: flex;
   align-items: center;
@@ -279,52 +327,97 @@ body.light-mode .theme-toggle {
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 80px;
-  right: 2rem;
+  top: 70px;
+  right: 0;
   background: var(--bg-light);
   color: var(--text-main);
   border: 1px solid rgba(99, 102, 241, 0.2);
   border-radius: 10px;
-  padding: 1rem;
+  padding: 1.2rem 1.5rem;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
   z-index: 99;
-  width: 240px;
+  width: 220px;
+}
+
+body.light-mode #navRight.open .nav-links {
+  background: #ffffff;
+  border-color: rgba(91, 33, 182, 0.15);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
 }
 
 #navRight.open .nav-links li {
-  margin: 0.45rem 0;
+  margin: 0.6rem 0;
+}
+
+#navRight.open .nav-links a {
+  font-size: 0.9rem;
 }
 
 @media (max-width: 890px) {
+  .navbar-container {
+    gap: 0.5rem;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+  }
+
   .nav-right {
     display: none;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: var(--bg-light);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 10px;
+    padding: 1rem;
+    flex-direction: column;
+    width: 250px;
+    z-index: 98;
+  }
+
+  body.light-mode .nav-right {
+    background: #ffffff;
+    border-color: rgba(91, 33, 182, 0.15);
   }
 
   .nav-right.open {
     display: flex;
   }
 
-  .menu-toggle,
+  .menu-toggle.menu-open,
+  .menu-toggle.menu-close,
   .settings-btn {
-    display: flex;
+    display: flex !important;
   }
 
-  .menu-toggle {
-    margin-left: auto;
+  .menu-close {
+    display: none !important;
   }
 
   .nav-links {
-    gap: 1rem;
-    flex-wrap: wrap;
+    gap: 0;
+  }
+
+  .nav-actions {
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(99, 102, 241, 0.15);
   }
 
   .theme-toggle {
-    font-size: 0.76rem;
-    padding: 0.45rem 0.8rem;
+    font-size: 0.7rem;
+    padding: 0.4rem 0.6rem;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .settings-btn {
+    font-size: 0.9rem;
+    width: 100%;
   }
 }
-
-/* New sections */
 .skills,
 .achievements,
 .activities {
