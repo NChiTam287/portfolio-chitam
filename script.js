@@ -264,11 +264,13 @@ const showModalImageAt = (index) => {
   modalImage.alt = alt;
   currentModalIndex = normalizedIndex;
   imageModal.classList.add('active');
+  imageModal.classList.remove('project-image'); // Remove project flag
 };
 
 const closeModal = () => {
   if (!imageModal || !modalImage) return;
   imageModal.classList.remove('active');
+  imageModal.classList.remove('project-image');
   modalImage.src = '';
   modalImage.alt = '';
   currentModalIndex = -1;
@@ -294,9 +296,27 @@ modalNext?.addEventListener('click', (e) => {
 });
 
 const bindModalToImages = () => {
+  // Slider items dari volunteer section
   modalItems.forEach((img, index) => {
     img.addEventListener('click', () => {
       showModalImageAt(index);
+    });
+  });
+
+  // Project images
+  const projectImages = document.querySelectorAll('.project-img');
+  projectImages.forEach((img) => {
+    img.style.cursor = 'pointer';
+    img.addEventListener('click', () => {
+      if (modalImage && imageModal) {
+        const src = img.src;
+        const alt = img.alt || 'Project Image';
+        modalImage.src = src;
+        modalImage.alt = alt;
+        imageModal.classList.add('active');
+        imageModal.classList.add('project-image');
+        currentModalIndex = -1;
+      }
     });
   });
 };
