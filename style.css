@@ -2514,9 +2514,15 @@ body.light-mode .footer {
     padding: 0 1.2rem;
   }
 
+  .navbar-container {
+    justify-content: center;
+  }
+
   .logo {
     font-size: 1.1rem;
     text-align: center;
+    margin: 0;
+    flex: none;
   }
 
   .logo span {
