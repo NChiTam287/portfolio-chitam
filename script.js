@@ -106,25 +106,17 @@ document.querySelectorAll(".nav-links a").forEach((link) => {
 
 // Mobile menu toggle
 const menuToggle = document.getElementById("menuToggle");
-const navRight = document.getElementById("navRight");
+const navMenu = document.getElementById("navMenu");
 
 const toggleMobileMenu = () => {
-  navRight.classList.toggle("open");
+  navMenu.classList.toggle("open");
 };
 
 const closeMobileMenu = () => {
-  navRight.classList.remove("open");
+  navMenu.classList.remove("open");
 };
 
 menuToggle.addEventListener("click", toggleMobileMenu);
-
-// Setting button mock action
-const settingsBtn = document.getElementById("settingsBtn");
-if (settingsBtn) {
-  settingsBtn.addEventListener("click", () => {
-    alert("Chức năng Cài đặt đang thử nghiệm. Cập nhật sớm nhé!");
-  });
-}
 
 // Hero dynamic role cycling with typing effect
 const roles = ["Web Developer", "UI/UX Designer", "Full Stack Developer", "Software Engineer", "Tech Enthusiast"];
