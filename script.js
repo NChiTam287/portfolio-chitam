@@ -106,7 +106,6 @@ document.querySelectorAll(".nav-links a").forEach((link) => {
 
 // Mobile menu toggle
 const menuToggle = document.getElementById("menuToggle");
-const menuClose = document.getElementById("menuClose");
 const navRight = document.getElementById("navRight");
 
 const toggleMobileMenu = () => {
@@ -118,7 +117,6 @@ const closeMobileMenu = () => {
 };
 
 menuToggle.addEventListener("click", toggleMobileMenu);
-menuClose.addEventListener("click", closeMobileMenu);
 
 // Setting button mock action
 const settingsBtn = document.getElementById("settingsBtn");
